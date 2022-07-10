@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <script src="assets/javascript/contact.js"></script>
+    <title>Aziz Fatkhu Rohman</title>
+  </head>
+  <body>
+    <!--Navbar-->
+    <nav>
+      <div class="logo">
+        <a href="index.html">
+          <img src="./assets/images/logo.png" alt="" />
+        </a>
+        <ul>
+          <li>
+            <a href="index.html" class="home">Home</a>
+          </li>
+          <li>
+            <a href="project.html">My Project</a>
+          </li>
+        </ul>
+      </div>
+      <div class="contact-me">
+        <a href="contact.html">Contact Me</a>
+      </div>
+    </nav>
+    <!--Form-->
+    <div class="intro"><h1>GET IN TOUCH</h1></div>
+    <div class="form">
+      <form id="contact">
+        <div>
+          <label for="name">Name</label>
+          <input type="text" id="name" />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" />
+        </div>
+        <div>
+          <label for="phone_number">Phone Number</label>
+          <input type="text" id="phone_number" />
+        </div>
+        <div>
+          <label for="subject">subject</label>
+          <select name="subject" id="subject">
+            <option value="null"></option>
+            <option value="1">Lets Talk</option>
+            <option value="2">Lets Colaborate</option>
+            <option value="3">Lets Create Project</option>
+          </select>
+        </div>
+        <div>
+          <label for="message">Your Message</label>
+          <textarea name="message" id="message" cols="30" rows="2"></textarea>
+        </div>
+        <button type="submit" class="submit" onclick="getData()">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
