@@ -5,17 +5,14 @@ function getData() {
   let subject = document.getElementById('subject').value;
   let message = document.getElementById('message').value;
 
-  if (name == '' || email == '' || phone_number == '' || subject == '' || message == '') {
-    alert('Formulir tidak boleh kosong');
+  if (!name || !email || !phone_number || !subject || !message) {
+    return alert('Formulir tidak boleh kosong');
   } else {
-    alert('Pesan berhasil terkirim');
+    alert('Data berhasil dilengkapi');
   }
-  let form = document.getElementById('contact');
-  form.reset();
-
-  let emailReceiver = 'ar834652@gmail.com';
-
+  let Mail = 'ar834652@gmail.com';
   let a = document.createElement('a');
-  a.href = `mailto:${emailReceiver}?subject=${subject}&body=Hai, Aku ${name}, ${message}, Respon melalui email ${email} ini atau nomor telpon ${phone} ini. sekian terima kasih`;
+
+  a.href = `mailto:${Mail}?subject=${subject}&body=Hai, namaku ${name} ${message} , silahkan hubungi melalui ${phone_number}, atau ${email}`;
   a.click();
 }
