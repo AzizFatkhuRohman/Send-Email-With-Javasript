@@ -1,66 +1,109 @@
-let Project = [];
-let ItemCheckBox = [];
-
-function PostProject(event) {
+let dataBlog = [];
+function postProject(event) {
   event.preventDefault();
-  let TitlePost = document.getElementById('TitlePost').value;
-  let StartDatePost = document.getElementById('StartDatePost').value;
-  let EndDatePost = document.getElementById('EndDatePost').value;
-  let DescriptionPost = document.getElementById('DescriptionPost').value;
-  let ImagePost = document.getElementById('ImagePost').files[0];
 
-  ImagePost = URL.createObjectURL(ImagePost);
+  let title = document.getElementById('TitlePost').value;
+  let description = document.getElementById('DescriptionPost').value;
+  let image = document.getElementById('input-blog-image').files;
 
-  let Technologies = document.getElementsByName('CheckedProject');
-
-  ItemCheckBox = [];
-  for (let i = 0; i < Technologies.length; i++) {
-    if (Technologies[i].checked == true) {
-      ItemCheckBox.push(Technologies[i].value);
-    }
+  if (!title || !description || !image) {
+    return alert('Formulir tidak boleh kosong');
+  } else {
+    alert('Data berhasil dilengkapi');
   }
-  let blogs = {
-    TitlePost,
-    StartDatePost,
-    EndDatePost,
-    DescriptionPost,
-    checkedValue,
-    ImagePost,
+
+  let MobileApp = document.getElementById('MobileApp').checked;
+  let WebApp = document.getElementById('WebApp').checked;
+  let DesktopApp = document.getElementById('DesktopApp').checked;
+
+  if (MobileApp) {
+    MobileApp = document.getElementById('MobileApp').value;
+  } else {
+    MobileApp = '';
+  }
+  if (WebApp) {
+    WebApp = document.getElementById('WebApp').value;
+  } else {
+    WebApp = '';
+  }
+  if (DesktopApp) {
+    DesktopApp = document.getElementById('DesktopApp').value;
+  } else {
+    DesktopApp = '';
+  }
+
+  console.log(MobileApp);
+  console.log(WebApp);
+  console.log(DesktopApp);
+
+  image = URL.createObjectURL(image[0]);
+
+  let blog = {
+    title,
+    description,
+    image,
+    author: 'Aziz F Rohman',
+    postAt: new Date(),
+    MobileApp,
+    WebApp,
+    DesktopApp,
   };
-  Project.push(blogs);
-  NewProject();
+
+  dataBlog.push(blog);
+
+  renderBlog();
 }
 
-let NewProject = () => {
-  let PostProject = document.getElementById('ProjectNew');
-  let data = checkedValue.length;
+function renderBlog() {
+  document.getElementById('contents').innerHTML = '';
 
-  PostProject.innerHTML = '';
-  for (i = 0; i < Project.length; i++) {
-    PostProject.innerHTML += `<div class="ProjectRender">
-        <div class="ImageProject">
-            <img src="${blogs[i].ImagePost}" alt="">
-        </div>
-        <div class="ContentProject">
-            <a href="projectDetail.html" class="titleCardProject">${blogs[i].TitlePost}</a>
-            <p class="DistanceProject">Duration : 2 Week</p>
-            <p class="DescriptionProject">${blogs[i].DescriptionPost}</p>
-            <div class="ItemIconProject">
-                ${(function icon() {
-                  let string = '';
-                  for (let j = 0; j < data; j++) {
-                    string += `<div class="itemIconProject">
-                            <i class="fa-brands fa-${blogs[i].checkedValue[j]}"></i>
-                        </div>`;
-                  }
-                  return string;
-                })()}
+  console.log(dataBlog);
+
+  for (let index = 0; index < dataBlog.length; index++) {
+    document.getElementById('contents').innerHTML += `
+    <div class="ProjectContainer" id="cardProject">
+            <div class="ProjectNew">
+                <div class="ImageProject">
+                    <img src="${dataBlog[index].image}" alt="warneng">
+                </div>
+                <div class="ContentProject">
+                    <a href="projectDetail.html" target="_blank" class="TitleProject">${dataBlog[index].title}</a>
+                    <p class="DistanceProject"> ${getFullTime(dataBlog[index].postAt)} | ${dataBlog[index].author}</p>
+                    <p class="DescriptionProject">${dataBlog[index].description}</p>
+                    <div class="ProjectCardIcon">
+                        <div class="ItemIconProject">
+                            <img src="${dataBlog[index].MobileApp}" alt="phone">
+                            <img src="${dataBlog[index].WebApp}" alt="web">
+                        </div>
+                    </div>
+                    <div class="ProjectAction">
+                        <a href="#" class="Edit"><button class="Edit">Edit</button></a>
+                        <a href="#" class="Delete"><button class="Delete">Delete</button></a>
+                    </div>
+                </div>
             </div>
-            <div class="ProjectAction">
-                <a href="#" class="Edit">Edit</a>
-                <a href="#" class="Delete">Delete</a>
-            </div>
         </div>
-    </div>`;
+        `;
   }
-};
+}
+
+function getFullTime(time) {
+  let month = ['Januari', 'Febuari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'Nopember', 'Desember'];
+
+  let date = time.getDate();
+  let monthIndex = time.getMonth();
+  let year = time.getFullYear();
+
+  let hours = time.getHours();
+  let minutes = time.getMinutes();
+
+  if (hours < 10) {
+    hours = '0' + hours;
+  } else if (minutes < 10) {
+    minutes = '0' + minutes;
+  }
+
+  let fullTime = `${date} ${month[monthIndex]} ${year} ${hours}:${minutes} WIB`;
+
+  return fullTime;
+}

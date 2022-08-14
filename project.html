@@ -71,23 +71,19 @@
                             <input type="checkbox" id="DesktopApp" name="CheckedProject" value="DesktopApp">
                             <label for="DesktopApp">Desktop App</label>
                         </div>
-                        <div class="ItemCheckboxProject">
-                            <input type="checkbox" id="MultiFlatform" name="CheckedProject" value="MultiFlatform">
-                            <label for="MultiFlatform">MultiFlatform</label>
-                        </div>
                     </div>
                 </div>
-
                 <div class="inputProject">
-                    <label>Upload Image</label>
-                    <div class="input-blog-image-group">
-                        <label for="inputImageProject">
-                            <p>Choose</p>
-                            <img src="assets/images/download.png" alt="file" width="30" height="30" />
-                        </label>
-                        <input type="file" id="ImagePost" hidden />
-                    </div>
-                </div>
+              <label>Upload Image</label>
+              <div class="input-blog-image-group">
+                <label for="input-blog-image">
+                  <p>Attach File</p>
+                  <img src="assets/images/download.png" alt="file" width="30" height="30" />
+                </label>
+                <input type="file" id="input-blog-image" hidden />
+              </div>
+            </div>
+
                 <div class="buttonpost">
                     <button type="submit">Submit</button>
                 </div>
@@ -97,15 +93,15 @@
     <!--My Project-->
     <div class="ProjectRender">
         <h1 class="titleProject">MY PROJECT</h1>
-
+        <div id="contents" class="listProjet">
         <div class="ProjectContainer" id="cardProject">
             <div class="ProjectNew">
                 <div class="ImageProject">
                     <img src="assets/images/Warneng.png" alt="warneng">
                 </div>
                 <div class="ContentProject">
-                    <a href="projectDetail.html" class="TitleProject">Warneng Aplication</a>
-                    <p class="DistanceProject">Duration : 2 Week</p>
+                    <a href="projectDetail.html" target="_blank" class="TitleProject">Warneng Aplication</a>
+                    <p class="DistanceProject">05 Jun 2022 12:30 WIB | Aziz F Rachman</p>
                     <p class="DescriptionProject">Ini adalah Project Pertamaku Membuat aplikasi mobile yang dimintai oleh beberapa <b>Mahasiswi kebidanan POLTEKKES KEMENKES RI</b> yang berhasil mendapatkat peringkat ke enam tingkat Jawa
                         barat. Aku membuat Aplikasi ini dengan tools Android studio, dan bahasa pemrograman Java.</p>
                     <div class="ProjectCardIcon">
@@ -120,5 +116,6 @@
                 </div>
             </div>
         </div>
+    </div>
 </body>
 </html>
