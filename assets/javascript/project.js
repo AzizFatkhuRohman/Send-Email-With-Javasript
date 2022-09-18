@@ -68,7 +68,7 @@ function renderBlog() {
                 </div>
                 <div class="ContentProject">
                     <a href="projectDetail.html" target="_blank" class="TitleProject">${dataBlog[index].title}</a>
-                    <p class="DistanceProject">${dataBlog[index].postAt} | ${dataBlog[index].author}</p>
+                    <p class="DistanceProject">${getFullTime(dataBlog[index].postAt)} | ${dataBlog[index].author}</p>
                     <p class="DescriptionProject">${dataBlog[index].description}</p>
                     <div class="ProjectCardIcon">
                         <div class="ItemIconProject">
@@ -92,7 +92,7 @@ function renderBlog() {
 }
 
 function getFullTime(time) {
-  let month = ['Januari', 'Febuari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'Nopember', 'Desember'];
+  let month = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agst', 'Sep', 'Okt', 'Nov', 'Des'];
 
   let date = time.getDate();
   let monthIndex = time.getMonth();
